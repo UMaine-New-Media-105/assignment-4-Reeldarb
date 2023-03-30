@@ -1,0 +1,56 @@
+function setup() {
+  createCanvas(800, 600);
+  angleMode(DEGREES);
+  noLoop();
+}
+
+function draw() {
+  push();
+  background(0);
+  noStroke();
+  addTile(0,0);
+  addTile(0,200);
+  addTile(0,400);
+  addTile(200,0);
+  addTile(200,200);
+  addTile(200,400);
+  addTile(400,0);
+  addTile(400,200);
+  addTile(400,400);
+  addTile(600,0);
+  addTile(600,200);
+  addTile(600,400);
+  pop();
+}
+
+function addTile(tileX,tileY) {
+  push()
+  translate(tileX,tileY)
+  addShape(100, 100, 1, "skyblue", 9, 0);
+  addShape(50, 55, 0.5, "red", 6, 125);
+  addShape(150, 150, 0.6, "orange", 7, 265);
+  addShape(150,55,0.2,"purple",8,45)
+  addShape(50,150,0.4,"green",4,25)
+  pop()
+}
+
+function addShape(
+  shapeX,
+  shapeY,
+  shapeSize,
+  shapeColor,
+  shapePoints,
+  shapeRotate
+) {
+  push();
+  translate(shapeX, shapeY);
+  scale(shapeSize);
+  fill(shapeColor);
+  rotate(shapeRotate);
+  for (let pointsDrawn = 0; pointsDrawn < shapePoints; pointsDrawn++) {
+    rotate(80);
+    rect(0, 0, 30);
+    shapeTips = 9;
+  }
+  pop();
+}
