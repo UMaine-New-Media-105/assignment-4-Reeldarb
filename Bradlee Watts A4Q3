@@ -1,0 +1,94 @@
+function setup() {
+  createCanvas(800, 600);
+  angleMode(DEGREES);
+  noLoop();
+  tilesPerRow = 4;
+  tilesPerColumn = 3;
+  tileWidth = width / tilesPerRow;
+  tileHeight = height / tilesPerColumn;
+
+  star1 = {
+    x: 100,
+    y: 100,
+    size: 1,
+    fill: color(random(50,255), random(50,255), random(50,255)),
+    points: random(1, 10),
+    rotate: random(360),
+  };
+
+  star2 = {
+    x: 50,
+    y: 55,
+    size: 0.5,
+    fill: color(random(50,255), random(50,255), random(50,255)),
+    points: random(1, 10),
+    rotate: random(360),
+  };
+
+  star3 = {
+    x: 155,
+    y: 155,
+    size: 0.6,
+    fill: color(random(50,255), random(50,255), random(50,255)),
+    points: random(1, 10),
+    rotate: random(360),
+  };
+
+  star4 = {
+    x: 150,
+    y: 55,
+    size: 0.2,
+    fill: color(random(50,255), random(50,255), random(50,255)),
+    points: random(1, 10),
+    rotate: random(360),
+  };
+
+  star5 = {
+    x: 50,
+    y: 150,
+    size: 0.4,
+    fill: color(random(50,255), random(50,255), random(50,255)),
+    points: random(1, 10),
+    rotate: random(360),
+  };
+}
+
+function draw() {
+  background(0);
+  for (let columnsDrawn = 0; columnsDrawn < tilesPerRow; columnsDrawn++) {
+    let offsetRight = columnsDrawn * tileWidth;
+    for (let rowsDrawn = 0; rowsDrawn < tilesPerColumn; rowsDrawn++) {
+      let offsetDown = rowsDrawn * tileHeight;
+      star1.tileX = star1.x + offsetRight;
+      star2.tileX = star2.x + offsetRight;
+      star3.tileX = star3.x + offsetRight;
+      star4.tileX = star4.x + offsetRight;
+      star5.tileX = star5.x + offsetRight;
+      star1.tileY = star1.y + offsetDown;
+      star2.tileY = star2.y + offsetDown;
+      star3.tileY = star3.y + offsetDown;
+      star4.tileY = star4.y + offsetDown;
+      star5.tileY = star5.y + offsetDown;
+      addStar(star1);
+      addStar(star2);
+      addStar(star3);
+      addStar(star4);
+      addStar(star5);
+    }
+  }
+}
+function addStar(star) {
+  push();
+  translate(star.tileX, star.tileY);
+  noStroke();
+  scale(star.size);
+  fill(star.fill);
+  rotate(star.rotate);
+
+  for (let pointsDrawn = 0; pointsDrawn < star.points; pointsDrawn++) {
+    rotate(80);
+    rect(0, 0, 30);
+    shapeTips = 9;
+  }
+  pop();
+}
