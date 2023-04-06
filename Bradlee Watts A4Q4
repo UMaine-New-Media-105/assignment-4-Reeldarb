@@ -1,0 +1,100 @@
+function setup() {
+  createCanvas(800, 400);
+  angleMode(DEGREES);
+  noLoop();
+  planetScale = 1;
+  planet = [
+    "mercury",
+    "venus",
+    "earth",
+    "mars",
+    "jupiter",
+    "saturn",
+    "uranus",
+    "neptune",
+  ];
+  tilesPerRow = planet.length;
+  tilesPerColumn = planet.length;
+  tileWidth = width / tilesPerRow;
+  tileHeight = height / tilesPerColumn;
+}
+
+function draw() {
+  background("black");
+  for (let rowsDrawn = 0; rowsDrawn < tilesPerRow; rowsDrawn++) {
+    for (let columnsDrawn = 0; columnsDrawn < tilesPerRow; columnsDrawn++) {
+      let thisPlanet = planet[(columnsDrawn + rowsDrawn) % planet.length];
+      let thisX = columnsDrawn * tileWidth;
+      let thisY = rowsDrawn * tileHeight;
+      addPlanet(thisPlanet, thisX + tileWidth / 2, thisY + tileHeight / 2);
+    }
+  }
+}
+function addPlanet(planet, x, y) {
+  push();
+  translate(x, y);
+  scale(planetScale);
+  noStroke();
+  if (planet == "mercury") {
+    fill("rgb(128,128,128)");
+    ellipse(0, 0, 50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("M", 0, 0);
+  } else if (planet == "venus") {
+    fill("rgb(255,165,0)");
+    ellipse(0, 0, 50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("V", 0, 0);
+  } else if (planet == "earth") {
+    fill("rgb(0,128,128)");
+    ellipse(0, 0, 50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("E", 0, 0);
+  } else if (planet == "mars") {
+    fill("rgb(193,68,14)");
+    ellipse(0, 0, 50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("M", 0, 0);
+  } else if (planet == "jupiter") {
+    fill("rgb(212,175,55)");
+    ellipse(0, 0, 50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("J", 0, 0);
+  } else if (planet == "saturn") {
+    fill("rgb(194,178,128)");
+    ellipse(0, 0, 50);
+    fill("rgb(247,209,138)");
+    ellipse(0, 0, 70, 30);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("S", 0, 0);
+  } else if (planet == "uranus") {
+    fill("rgb(164,221,237)");
+    ellipse(0, 0, 50);
+    fill("rgb(230,244,254)");
+    ellipse(0, 0, 80, 20);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("U", 0, 0);
+  } else if (planet == "neptune") {
+    fill("rgb(47,84,235)");
+    ellipse(0, 0, 50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("N", 0, 0);
+  }
+  pop();
+}
